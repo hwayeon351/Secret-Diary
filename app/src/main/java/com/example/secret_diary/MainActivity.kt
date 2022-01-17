@@ -1,6 +1,7 @@
 package com.example.secret_diary
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -62,8 +63,7 @@ class MainActivity : AppCompatActivity() {
             //password Preference 파일 안에 password라는 key로 값을 가져온다. 초기값은 000으로 셋팅
             if (passwordPreferences.getString("password", "000").equals(passwordFromUser)) {
                 //패스워드 일치
-                //TODO 다이어리 페이지 작성 후에 넘겨줘야 함
-                //startActivity()
+                startActivity(Intent(this, DiaryActivity::class.java))
             } else {
                 showErrorAlertDialog()
             }
