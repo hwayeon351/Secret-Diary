@@ -73,6 +73,10 @@ class MainActivity : AppCompatActivity() {
             val passwordPreferences = getSharedPreferences("password", Context.MODE_PRIVATE)
             if (changePasswordMode) {
                 //비밀번호를 저장
+                //commit = true -> commit, preference에 데이터가 저장될 때까지 UI쓰레드는 block되므로 화면이 멈춘다.
+                    // 무거울 작업을 할 때에는 화면이 멈추기 때문에 앱이 오랫동안 멈춰 있게 되고 사용자 측면에서 앱이 죽었다고 인식할 수 있기 때문에 Thread를 사용해서 적용하는 것이 좋다.
+                //commit = false -> apply, UI쓰레드가 block되지 않고 비동기적으로 데이터가 저장된다.
+                    // 주로 무거운 작업을 할 때 apply를 적용하는 것이 좋다.
                 passwordPreferences.edit(true) {
                     val passwordFromUser =
                         "${numberPicker1.value}${numberPicker2.value}${numberPicker3.value}"

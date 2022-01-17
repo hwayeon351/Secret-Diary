@@ -12,6 +12,7 @@ import androidx.core.widget.addTextChangedListener
 
 class DiaryActivity: AppCompatActivity() {
 
+    //Handler는 쓰레드와 쓰레드간의 통신을 엮어주는 기능을 한다
     //getMainLooper에 의해 handler가 메인쓰레드에 연결되도록 함
     private val handler = Handler(Looper.getMainLooper())
 
